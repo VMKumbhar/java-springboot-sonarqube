@@ -13,14 +13,14 @@ pipeline {
           stage("Build") {
             agent any
             steps {
-                sh 'mvn clean package'
+                bat 'mvn clean package'
             }
           }
 
           stage("SonarQube Analysis") {
             agent any  
             steps {
-              sh 'mvn sonar:sonar'
+              bat 'mvn sonar:sonar'
             }
           }
 
@@ -31,7 +31,7 @@ pipeline {
                       }
               steps {
                   //Add deploy steps & Alerts below
-                  sh 'echo "Deploying into Server"' 
+                  bat 'echo "Deploying into Server"' 
 
                 }
           } 
