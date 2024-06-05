@@ -17,12 +17,13 @@ pipeline {
             }
           }
 
-          stage("SonarQube Analysis") {
-            agent any  
-            steps {
-              bat 'mvn sonar:sonar'
+          stage('SonarQube analysis') {
+	    steps {
+	        withSonarQubeEnv(installationName: 'sq1') {
+	            bat "mvn clean verify sonar:sonar -Dsonar.projectKey=sonarcodecoverage -Dsonar.projectName='sonarcodecoverage'"
+		}
             }
-          }
+        }
 
           stage('Approve Deployment') {
               agent any
