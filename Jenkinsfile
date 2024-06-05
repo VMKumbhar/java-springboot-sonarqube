@@ -24,18 +24,6 @@ pipeline {
 		}
             }
         }
-
-          stage('Approve Deployment') {
-              agent any
-              input{
-                   message "Do you want to proceed for deployment?"
-                      }
-              steps {
-                  //Add deploy steps & Alerts below
-                  bat 'echo "Deploying into Server"' 
-
-                }
-          } 
           
         } // stage
         
